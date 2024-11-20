@@ -1,5 +1,6 @@
 import express from 'express'
 import usersRouter from './routers/user.js'
+import groupRouter from './routers/groups.js'
 import errorHandler from './middleware/errorhandler.js'
 import routeErrorHandler from './middleware/routeErrorHandler.js'
 import cors from 'cors'
@@ -21,6 +22,8 @@ app.use(express.urlencoded({extended:false}))
 // handles all responses on the routes starting with /api/users
 app.use('/api/users',usersRouter)
 
+// handles all responses on the routes starting with /api/groups
+app.use('/api/groups',groupRouter)
 
 //handles all route errors in application
 app.use(routeErrorHandler)
