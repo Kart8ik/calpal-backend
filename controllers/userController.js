@@ -49,6 +49,7 @@ export const getUser = async (req, res, next) => {
     }
 }
 
+// Create a new user
 export const createUser = async (req, res, next) => {
     try {
         const newUser = new User({
@@ -99,8 +100,7 @@ export const createTask = async (req, res, next) => {
     }
 }
 
-// Delete a task from a user based on username and task id
-
+// Delete a task from a user based on username and task title
 export const deleteTask = async (req, res, next) => {
     try {
         const user = await User.findOne({username:req.params.username})
@@ -117,6 +117,7 @@ export const deleteTask = async (req, res, next) => {
     }
 }
 
+// Add a friend to a user based on username
 export const addFriend = async (req, res, next) => {
     try {
         const user = await User.findOne({username:req.params.username})
@@ -137,7 +138,7 @@ export const addFriend = async (req, res, next) => {
     }
 }
 
-
+// Delete a friend from a user based on username
 export const deleteFriend = async (req, res, next) => {
     try {
         const user = await User.findOne({username:req.params.username})
