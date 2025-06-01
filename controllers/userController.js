@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 import { Group } from './groupController.js'
+import dotenv from 'dotenv'
+const envConfigResult = dotenv.config()
 
 // Connect to MongoDB
 try {
-    await mongoose.connect('mongodb://localhost:27017/calpal', {
+    await mongoose.connect(process.env.MONGODB_URI, {
     });
     console.log('Connected to MongoDB');
 } catch (err) {

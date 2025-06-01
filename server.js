@@ -1,7 +1,11 @@
+import dotenv from 'dotenv'
+const envConfigResult = dotenv.config()
+
+
 import express from 'express'
 import usersRouter from './routers/user.js'
 import groupRouter from './routers/groups.js'
-import errorHandler from './middleware/errorhandler.js'
+import errorHandler from './middleware/errorHandler.js'
 import routeErrorHandler from './middleware/routeErrorHandler.js'
 import cors from 'cors'
 
@@ -14,6 +18,7 @@ app.use(cors())
 
 // parses url encoded data and makes it available in req.body
 app.use(express.urlencoded({extended:false}))
+
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
 // })
@@ -32,6 +37,7 @@ app.use(routeErrorHandler)
 app.use(errorHandler)
 
 // runs the server on port 8080
-app.listen(8080,()=>{
-  console.log("the server is running on port 8080")
+const port = process.env.PORT || 8080
+app.listen(port,()=>{
+  console.log(`the server is running on port ${port}`)
 })

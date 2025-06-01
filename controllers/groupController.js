@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 import { User } from './userController.js'
-
+import dotenv from 'dotenv'
+const envConfigResult = dotenv.config()
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/calpal', {
+mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => {
     console.log('Connected to MongoDB');
 }).catch(err => {
